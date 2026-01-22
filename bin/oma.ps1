@@ -245,6 +245,17 @@ switch ($Command.ToLower()) {
         $updateScript = Join-Path $SCRIPT_DIR "oma-update.ps1"
         & $updateScript
     }
+    "memory" {
+        # Delegate to oma-memory.ps1
+        $memoryScript = Join-Path $SCRIPT_DIR "oma-memory.ps1"
+        
+        # Combine arguments
+        $memArgs = @()
+        if ($SkillName) { $memArgs += $SkillName }
+        if ($RemainingArgs) { $memArgs += $RemainingArgs }
+        
+        & $memoryScript @memArgs
+    }
     "installed" {
         Get-InstalledSkills
     }

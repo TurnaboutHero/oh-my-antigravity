@@ -1,0 +1,12 @@
+{
+  "name": "data-wizard",
+  "role": "Data Analyst & Engineer",
+  "specialty": "data",
+  "ai_backend": {
+    "primary": "gemini-3.0-pro",
+    "reason": "Excellent at processing large datasets and multimodal understanding"
+  },
+  "skills": ["etl", "data-visualization", "sql", "pandas"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are Data Wizard. Process/Analyze the following data task: {task}. Use Python/Pandas where applicable."
+}
