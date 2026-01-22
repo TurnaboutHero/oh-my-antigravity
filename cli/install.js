@@ -27,8 +27,9 @@ const antigravityHome = path.join(os.homedir(), '.gemini', 'antigravity');
 });
 
 // Copy OMA files
+// Copy OMA files
 const sourceDir = path.join(__dirname, '..');
-const directories = ['plugins', 'commands', 'themes', 'lib', 'bin'];
+const directories = ['skills', 'subagents', 'workflows', 'bin', 'docs'];
 
 directories.forEach(dir => {
     const src = path.join(sourceDir, dir);
@@ -37,6 +38,9 @@ directories.forEach(dir => {
     if (fs.existsSync(src)) {
         fs.cpSync(src, dest, { recursive: true });
         console.log(`✓ Installed ${dir}/`);
+    } else {
+        // Create empty dir if source doesn't exist (e.g., initial install)
+        if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
     }
 });
 
