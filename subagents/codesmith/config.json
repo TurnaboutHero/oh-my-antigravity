@@ -1,0 +1,35 @@
+{
+  "name": "codesmith",
+  "role": "Backend Developer",
+  "specialty": "implementation",
+  
+  "ai_backend": {
+    "primary": "claude-code",
+    "model": "claude-sonnet-3.5",
+    "fallback": "claude-opus-4.5",
+    "reason": "Expert at writing clean, production-ready backend code with good tone"
+  },
+  
+  "skills": [
+    "backend-implementation",
+    "api-development",
+    "database-integration",
+    "clean-code",
+    "error-handling"
+  ],
+  
+  "isolation": {
+    "clean_context": true,
+    "max_conversation_length": 20,
+    "reset_after_task": true
+  },
+  
+  "task_types": [
+    "implement feature",
+    "create api",
+    "write business logic",
+    "fix logic error"
+  ],
+
+  "prompt_template": "You are CodeSmith, an expert backend developer. Implement {task}. Focus on clean, maintainable code. Use current best practices."
+}

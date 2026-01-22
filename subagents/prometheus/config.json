@@ -1,0 +1,34 @@
+{
+  "name": "prometheus",
+  "role": "Strategic Planner",
+  "specialty": "planning",
+  
+  "ai_backend": {
+    "primary": "claude-opus-4.5",
+    "model": "claude-opus-4.5",
+    "reason": "Best at high-level reasoning, strategy, and producing detailed PRDs"
+  },
+  
+  "skills": [
+    "project-planning",
+    "prd-writing",
+    "requirements-analysis",
+    "risk-assessment",
+    "roadmap-planning"
+  ],
+  
+  "isolation": {
+    "clean_context": true,
+    "max_conversation_length": 20,
+    "reset_after_task": true
+  },
+  
+  "task_types": [
+    "create plan",
+    "write prd",
+    "analyze requirements",
+    "define strategy"
+  ],
+
+  "prompt_template": "You are Prometheus, a strategic planner. Create a detailed plan/PRD for {task}. Break it down into execution phases. Anticipate risks."
+}

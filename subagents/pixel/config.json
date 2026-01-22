@@ -1,0 +1,35 @@
+{
+  "name": "pixel",
+  "role": "Frontend & UI Designer",
+  "specialty": "ui-ux",
+  
+  "ai_backend": {
+    "primary": "gemini-3.0-pro",
+    "model": "gemini-3.0-pro",
+    "fallback": "claude-sonnet-3.5",
+    "reason": "Superior at visual design, UI components, and modern CSS"
+  },
+  
+  "skills": [
+    "frontend-implementation",
+    "ui-design",
+    "responsive-layout",
+    "accessibility",
+    "component-architecture"
+  ],
+  
+  "isolation": {
+    "clean_context": true,
+    "max_conversation_length": 10,
+    "reset_after_task": true
+  },
+  
+  "task_types": [
+    "create component",
+    "design ui",
+    "fix css",
+    "implement frontend logic"
+  ],
+
+  "prompt_template": "You are Pixel, a UI/UX specialist. Create/Update {task}. Focus on aesthetics, responsiveness, and user experience."
+}

@@ -17,7 +17,7 @@ param(
 
 # Configuration
 $OMA_HOME = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
-$SESSIONS_DIR = Join-Path $OMA_HOME ".oma" "sessions"
+$SESSIONS_DIR = Join-Path (Join-Path $OMA_HOME ".oma") "sessions"
 $SUBAGENTS_DIR = Join-Path $OMA_HOME "subagents"
 
 # Ensure directories exist
@@ -26,13 +26,13 @@ if (-not (Test-Path $SESSIONS_DIR)) {
 }
 
 # Load SubAgent config
-$configPath = Join-Path $SUBAGENTS_DIR $SubAgent "config.json"
+$configPath = Join-Path (Join-Path $SUBAGENTS_DIR $SubAgent) "config.json"
 if (-not (Test-Path $configPath)) {
     Write-Host "[ERROR] SubAgent '$SubAgent' not found" -ForegroundColor Red
     exit 1
 }
 
-$config = Get-Content $configPath | ConvertFrom-Json
+$config = Get-Content $configPath -Raw | ConvertFrom-Json
 
 # Determine AI backend
 if ($AiBackend -eq "auto") {
@@ -40,7 +40,7 @@ if ($AiBackend -eq "auto") {
 }
 
 Write-Host "[OMA] Spawning SubAgent: $SubAgent" -ForegroundColor Cyan
-Write-Host "  AI Backend: $AiBackend" -ForegroundColor Gray
+Write-Host "  AI Backend: '$AiBackend' (from config: '$($config.ai_backend.primary)')" -ForegroundColor Gray
 Write-Host "  Task: $Task" -ForegroundColor Gray
 
 # Generate session ID

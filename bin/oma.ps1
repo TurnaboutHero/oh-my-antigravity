@@ -10,7 +10,10 @@ param(
     [string]$SkillName,
     
     [switch]$Global,
-    [switch]$Project
+    [switch]$Project,
+    
+    [Parameter(ValueFromRemainingArguments=$true)]
+    [string[]]$RemainingArgs
 )
 
 # Base paths
@@ -213,10 +216,37 @@ switch ($Command.ToLower()) {
         Remove-Skill -Name $SkillName -ForProject:$Project
     }
     "list" {
-        Show-AvailableSkills
+        Get-AvailableSkills
+    }
+    "spawn" {
+        # Delegate to oma-spawn.ps1
+        $spawnScript = Join-Path $SCRIPT_DIR "oma-spawn.ps1"
+        
+        # Combine arguments: SkillName is the first arg for spawn, RemainingArgs are the rest
+        $spawnArgs = @()
+        if ($SkillName) { $spawnArgs += $SkillName }
+        if ($RemainingArgs) { $spawnArgs += $RemainingArgs }
+        
+        & $spawnScript @spawnArgs
+    }
+    "session" {
+        # Delegate to oma-session.ps1
+        $sessionScript = Join-Path $SCRIPT_DIR "oma-session.ps1"
+        
+        # Combine arguments
+        $sessionArgs = @()
+        if ($SkillName) { $sessionArgs += $SkillName }
+        if ($RemainingArgs) { $sessionArgs += $RemainingArgs }
+        
+        & $sessionScript @sessionArgs
+    }
+    "update" {
+        # Delegate to oma-update.ps1
+        $updateScript = Join-Path $SCRIPT_DIR "oma-update.ps1"
+        & $updateScript
     }
     "installed" {
-        Show-InstalledSkills
+        Get-InstalledSkills
     }
     "help" {
         Show-Help

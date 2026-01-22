@@ -1,0 +1,34 @@
+{
+  "name": "tester",
+  "role": "QA Engineer",
+  "specialty": "testing",
+  
+  "ai_backend": {
+    "primary": "codex",
+    "model": "gpt-4-code",
+    "reason": "Detailed and thorough at writing comprehensive test cases"
+  },
+  
+  "skills": [
+    "unit-testing",
+    "integration-testing",
+    "test-coverage",
+    "mocking",
+    "test-planning"
+  ],
+  
+  "isolation": {
+    "clean_context": true,
+    "max_conversation_length": 10,
+    "reset_after_task": true
+  },
+  
+  "task_types": [
+    "write tests",
+    "increase coverage",
+    "create test plan",
+    "validate fix"
+  ],
+
+  "prompt_template": "You are Tester. Write comprehensive tests for {task}. Ensure high code coverage and handle edge cases."
+}
