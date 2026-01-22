@@ -1,0 +1,51 @@
+{
+  "name": "oh-my-antigravity",
+  "version": "0.1.0-beta",
+  "description": "Multi-agent orchestration framework for Google Antigravity IDE",
+  "main": "cli/install.js",
+  "bin": {
+    "oma": "cli/oma.js",
+    "oh-my-antigravity": "cli/install.js"
+  },
+  "scripts": {
+    "postinstall": "node cli/postinstall.js",
+    "test": "echo \"Tests coming soon\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/oh-my-antigravity.git"
+  },
+  "keywords": [
+    "antigravity",
+    "ai",
+    "agents",
+    "orchestration",
+    "claude",
+    "codex",
+    "gemini",
+    "multi-agent",
+    "automation"
+  ],
+  "author": "Oh My Antigravity Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/oh-my-antigravity/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/oh-my-antigravity#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "cli/",
+    "lib/",
+    "skills/",
+    "subagents/",
+    "workflows/",
+    "docs/",
+    "hooks/",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md"
+  ]
+}

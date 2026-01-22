@@ -1,0 +1,265 @@
+#!/bin/bash
+# Oh My Antigravity (OMA) CLI - Bash Version
+# Cross-platform CLI for managing Antigravity plugins, themes, and commands
+
+set -e
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+MAGENTA='\033[0;35m'
+WHITE='\033[1;37m'
+NC='\033[0m' # No Color
+
+# Paths
+OMA_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ANTIGRAVITY_GLOBAL="$HOME/.gemini/antigravity"
+ANTIGRAVITY_PROJECT=".agent"
+
+# State
+SCOPE="global"
+
+show_banner() {
+    echo -e "${MAGENTA}"
+    echo "   ____  __  __    _      "
+    echo "  / __ \|  \/  |  / \     Oh My Antigravity"
+    echo " | |  | | \  / | / _ \    The Ultimate Antigravity Framework"
+    echo " | |  | | |\/| |/ ___ \   Version 1.0.0"
+    echo " |_|  |_|_|  |_/_/   \_\  "
+    echo -e "${NC}"
+}
+
+show_help() {
+    show_banner
+    echo -e "${YELLOW}USAGE:${NC}"
+    echo "  oma <command> [target] [options]"
+    echo ""
+    echo -e "${YELLOW}COMMANDS:${NC}"
+    echo "  install <plugin>    Install a plugin (skill)"
+    echo "  remove <plugin>     Remove a plugin"
+    echo "  list                List available plugins"
+    echo "  installed           List installed plugins"
+    echo "  update              Update OMA framework"
+    echo "  help                Show this help message"
+    echo ""
+    echo -e "${YELLOW}OPTIONS:${NC}"
+    echo "  --project           Install to current project only (.agent/skills)"
+    echo "  --global            Install globally (~/.gemini/antigravity/skills)"
+    echo ""
+    echo -e "${YELLOW}EXAMPLES:${NC}"
+    echo "  oma install python-expert"
+    echo "  oma install react --project"
+    echo "  oma list"
+    echo ""
+}
+
+success() {
+    echo -e "${GREEN}$1${NC}"
+}
+
+error() {
+    echo -e "${RED}$1${NC}"
+}
+
+info() {
+    echo -e "${CYAN}$1${NC}"
+}
+
+warning() {
+    echo -e "${YELLOW}$1${NC}"
+}
+
+get_target_path() {
+    if [ "$SCOPE" = "project" ]; then
+        local path="$(pwd)/${ANTIGRAVITY_PROJECT}/skills"
+        mkdir -p "$path"
+        echo "$path"
+    else
+        local path="${ANTIGRAVITY_GLOBAL}/skills"
+        mkdir -p "$path"
+        echo "$path"
+    fi
+}
+
+install_plugin() {
+    local plugin_name="$1"
+    
+    if [ -z "$plugin_name" ]; then
+        error "Error: Plugin name is required."
+        echo "Usage: oma install <plugin-name>"
+        return 1
+    fi
+    
+    local source_path="${OMA_HOME}/plugins/${plugin_name}"
+    
+    if [ ! -d "$source_path" ]; then
+        error "Error: Plugin '$plugin_name' not found in OMA repository."
+        echo "Available plugins:"
+        list_plugins
+        return 1
+    fi
+    
+    local target_path=$(get_target_path)
+    local dest_path="${target_path}/${plugin_name}"
+    
+    info "Installing '$plugin_name' to $SCOPE scope..."
+    
+    if [ -d "$dest_path" ]; then
+        warning "Plugin already exists. Updating..."
+        rm -rf "$dest_path"
+    fi
+    
+    cp -r "$source_path" "$dest_path"
+    success "✓ Successfully installed '$plugin_name' to $target_path"
+}
+
+remove_plugin() {
+    local plugin_name="$1"
+    
+    if [ -z "$plugin_name" ]; then
+        error "Error: Plugin name is required."
+        return 1
+    fi
+    
+    local target_path=$(get_target_path)
+    local plugin_path="${target_path}/${plugin_name}"
+    
+    if [ ! -d "$plugin_path" ]; then
+        error "Error: Plugin '$plugin_name' is not installed in $SCOPE scope."
+        return 1
+    fi
+    
+    info "Removing '$plugin_name' from $SCOPE scope..."
+    rm -rf "$plugin_path"
+    success "✓ Successfully removed '$plugin_name'"
+}
+
+list_plugins() {
+    local plugins_path="${OMA_HOME}/plugins"
+    
+    if [ ! -d "$plugins_path" ]; then
+        warning "No plugins directory found."
+        return
+    fi
+    
+    echo ""
+    echo -e "${YELLOW}Available Plugins:${NC}"
+    echo "───────────────────────────────────"
+    
+    for plugin_dir in "$plugins_path"/*/; do
+        if [ -d "$plugin_dir" ]; then
+            local plugin_name=$(basename "$plugin_dir")
+            local description=""
+            local skill_md="${plugin_dir}SKILL.md"
+            
+            if [ -f "$skill_md" ]; then
+                description=$(grep -oP '(?<=description:\s).+' "$skill_md" 2>/dev/null | head -1 || echo "")
+            fi
+            
+            echo -e "  📦 ${WHITE}${plugin_name}${NC}${description:+ - }${description}"
+        fi
+    done
+    echo ""
+}
+
+list_installed() {
+    echo ""
+    echo -e "${YELLOW}Installed Plugins:${NC}"
+    echo "───────────────────────────────────"
+    
+    # Global plugins
+    local global_path="${ANTIGRAVITY_GLOBAL}/skills"
+    if [ -d "$global_path" ]; then
+        local has_global=false
+        for plugin_dir in "$global_path"/*/; do
+            if [ -d "$plugin_dir" ]; then
+                if [ "$has_global" = false ]; then
+                    echo -e "  ${CYAN}Global (~/.gemini/antigravity/skills):${NC}"
+                    has_global=true
+                fi
+                echo "    🌍 $(basename "$plugin_dir")"
+            fi
+        done
+    fi
+    
+    # Project plugins
+    local project_path="$(pwd)/${ANTIGRAVITY_PROJECT}/skills"
+    if [ -d "$project_path" ]; then
+        local has_project=false
+        for plugin_dir in "$project_path"/*/; do
+            if [ -d "$plugin_dir" ]; then
+                if [ "$has_project" = false ]; then
+                    echo -e "  ${CYAN}Project (.agent/skills):${NC}"
+                    has_project=true
+                fi
+                echo "    📁 $(basename "$plugin_dir")"
+            fi
+        done
+    fi
+    
+    echo ""
+}
+
+update_oma() {
+    info "Checking for updates..."
+    warning "Auto-update feature coming soon!"
+    echo "For now, please run 'git pull' in the OMA directory."
+}
+
+# Parse arguments
+COMMAND=""
+TARGET=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --project)
+            SCOPE="project"
+            shift
+            ;;
+        --global)
+            SCOPE="global"
+            shift
+            ;;
+        --help|-h)
+            show_help
+            exit 0
+            ;;
+        *)
+            if [ -z "$COMMAND" ]; then
+                COMMAND="$1"
+            elif [ -z "$TARGET" ]; then
+                TARGET="$1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+# Main execution
+case "$COMMAND" in
+    install)
+        install_plugin "$TARGET"
+        ;;
+    remove|uninstall)
+        remove_plugin "$TARGET"
+        ;;
+    list)
+        list_plugins
+        ;;
+    installed)
+        list_installed
+        ;;
+    update)
+        update_oma
+        ;;
+    help|"")
+        show_help
+        ;;
+    *)
+        error "Unknown command: $COMMAND"
+        echo "Run 'oma help' for usage information."
+        exit 1
+        ;;
+esac

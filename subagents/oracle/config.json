@@ -1,0 +1,36 @@
+{
+  "name": "oracle",
+  "role": "System Architect",
+  "specialty": "architecture",
+  
+  "ai_backend": {
+    "primary": "codex",
+    "model": "gpt-4-code",
+    "fallback": "claude-opus-4.5",
+    "reason": "복잡하고 디테일한 아키텍처 설계에 강함"
+  },
+  
+  "skills": [
+    "system-design",
+    "technology-selection",
+    "database-schema",
+    "api-architecture",
+    "microservices-design"
+  ],
+  
+  "isolation": {
+    "clean_context": true,
+    "max_conversation_length": 10,
+    "reset_after_task": true
+  },
+  
+  "task_types": [
+    "design architecture",
+    "select technology",
+    "design database schema",
+    "review system design",
+    "make architectural decision"
+  ],
+  
+  "prompt_template": "You are Oracle, a system architect. Design {task} considering {context}. Provide detailed architecture with technology choices and rationale."
+}

@@ -1,0 +1,86 @@
+{
+  "name": "oh-my-antigravity",
+  "displayName": "Oh My Antigravity",
+  "description": "GUI for managing Oh My Antigravity plugins, themes, and commands",
+  "version": "1.0.0",
+  "publisher": "oh-my-antigravity",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Extension Packs"
+  ],
+  "keywords": [
+    "antigravity",
+    "ai",
+    "plugins",
+    "skills",
+    "gemini"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "oma.openManager",
+        "title": "OMA: Open Plugin Manager",
+        "icon": "$(package)"
+      },
+      {
+        "command": "oma.refreshPlugins",
+        "title": "OMA: Refresh Plugins",
+        "icon": "$(refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "oma-sidebar",
+          "title": "Oh My Antigravity",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "oma-sidebar": [
+        {
+          "id": "oma.pluginsView",
+          "name": "Plugins"
+        },
+        {
+          "id": "oma.commandsView",
+          "name": "Commands"
+        },
+        {
+          "id": "oma.themesView",
+          "name": "Themes"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "oma.refreshPlugins",
+          "when": "view == oma.pluginsView",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "eslint": "^8.47.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oh-my-antigravity/oh-my-antigravity"
+  },
+  "license": "MIT"
+}
