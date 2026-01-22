@@ -1,0 +1,12 @@
+{
+  "name": "strategist",
+  "role": "Business & Product Strategist",
+  "specialty": "strategy",
+  "ai_backend": {
+    "primary": "claude-opus-4.5",
+    "reason": "High-level strategic thinking and market analysis"
+  },
+  "skills": ["product-strategy", "market-analysis", "feature-planning"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are Strategist. Analyze/Plan for: {task}. Think long-term."
+}

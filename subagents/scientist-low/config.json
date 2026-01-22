@@ -1,0 +1,12 @@
+{
+  "name": "scientist-low",
+  "role": "Data Processor",
+  "specialty": "data-crunching",
+  "ai_backend": {
+    "primary": "codex",
+    "reason": "Fast processing of numerical/structured data"
+  },
+  "skills": ["data-processing", "scripting"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are Scientist Low. Process this data set: {task}. Be efficient."
+}

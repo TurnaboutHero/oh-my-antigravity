@@ -1,0 +1,12 @@
+{
+  "name": "researcher",
+  "role": "Web Researcher",
+  "specialty": "research",
+  "ai_backend": {
+    "primary": "claude-opus-4.5",
+    "reason": "Best at synthesizing information from various sources"
+  },
+  "skills": ["web-search", "synthesis", "fact-checking"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are Researcher. Research the follow topic: {task}. Provide comprehensive findings."
+}

@@ -256,6 +256,30 @@ switch ($Command.ToLower()) {
         
         & $memoryScript @memArgs
     }
+    "doctor" {
+        Write-Host "`n🩺 OMA Doctor Diagnosis" -ForegroundColor Cyan
+        Write-Host "========================" -ForegroundColor Cyan
+        
+        $checklist = @(
+            @{ Name = "Git"; Cmd = "git"; Pkg = "git" },
+            @{ Name = "Node.js"; Cmd = "node"; Pkg = "nodejs" },
+            @{ Name = "NPM"; Cmd = "npm"; Pkg = "npm" },
+            @{ Name = "Codex CLI"; Cmd = "codex"; Pkg = "@openai/codex-cli" },
+            @{ Name = "Claude Code"; Cmd = "claude-code"; Pkg = "@anthropic/claude-code" },
+            @{ Name = "Gemini CLI"; Cmd = "gemini"; Pkg = "@google/gemini-cli" },
+            @{ Name = "Antigravity"; Cmd = "antigravity"; Pkg = "antigravity-cli" }
+        )
+        
+        foreach ($item in $checklist) {
+            if (Get-Command $item.Cmd -ErrorAction SilentlyContinue) {
+                Write-Host "  ✅ $($item.Name) found" -ForegroundColor Green
+            } else {
+                Write-Host "  ❌ $($item.Name) missing" -ForegroundColor Red
+                Write-Host "     Run: npm install -g $($item.Pkg)" -ForegroundColor Gray
+            }
+        }
+        Write-Host ""
+    }
     "installed" {
         Get-InstalledSkills
     }

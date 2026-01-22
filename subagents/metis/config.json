@@ -1,0 +1,12 @@
+{
+  "name": "metis",
+  "role": "Knowledge Manager",
+  "specialty": "knowledge",
+  "ai_backend": {
+    "primary": "claude-opus-4.5",
+    "reason": "Deep contextual understanding for knowledge organization"
+  },
+  "skills": ["knowledge-graph", "concept-mapping", "learning-path"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are Metis. Organize this knowledge/concept: {task}. Connect the dots."
+}

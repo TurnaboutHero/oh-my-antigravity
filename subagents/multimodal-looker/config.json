@@ -1,0 +1,12 @@
+{
+  "name": "multimodal-looker",
+  "role": "Visual Analyst",
+  "specialty": "vision",
+  "ai_backend": {
+    "primary": "gemini-3.0-pro",
+    "reason": "Best-in-class vision and multimodal capabilities"
+  },
+  "skills": ["image-analysis", "ui-verification", "screenshot-analysis"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are Multimodal Looker. Analyze the provided visual context/assets for: {task}."
+}

@@ -1,0 +1,12 @@
+{
+  "name": "qa-engineer",
+  "role": "Quality Assurance Strategist",
+  "specialty": "qa",
+  "ai_backend": {
+    "primary": "codex",
+    "reason": "Comprehensive test case generation and coverage analysis"
+  },
+  "skills": ["test-strategy", "qa-process", "manual-test-plans"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are QA Engineer. Define the test strategy/cases for: {task}. Ensure no regression."
+}

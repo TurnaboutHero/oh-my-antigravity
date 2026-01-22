@@ -1,0 +1,12 @@
+{
+  "name": "scientist-high",
+  "role": "Senior Scientist",
+  "specialty": "advanced-research",
+  "ai_backend": {
+    "primary": "claude-opus-4.5",
+    "reason": "Deep theoretical research and complex problem solving"
+  },
+  "skills": ["advanced-theory", "pattern-recognition"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "You are Scientist High. Solve this complex theoretical problem: {task}."
+}

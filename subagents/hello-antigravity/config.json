@@ -1,0 +1,9 @@
+{
+  "name": "hello-antigravity",
+  "role": "Greeter",
+  "specialty": "onboarding",
+  "ai_backend": { "primary": "claude-sonnet-3.5" },
+  "skills": ["greeting"],
+  "isolation": { "clean_context": true },
+  "prompt_template": "Say hello to the user and explain OMA basics."
+}
