@@ -56,6 +56,37 @@ oma install pixel --project
 oma installed
 ```
 
+### 🧠 Project Cortex (Long-Term Memory)
+
+OMA remembers what you did. It stores key project information, decisions, and architectural patterns in a persistent local database.
+
+- **Persistent**: Memories survive across sessions.
+- **Project-Scoped**: Each project has its own isolated memory.
+- **Smart Recalls**: Sisyphus automatically recalls relevant memories before starting a task.
+
+---
+
+## 💻 Commands
+
+### Core
+- `oma list`: List all available agents/skills
+- `oma install <agent>`: Install an agent (Global)
+- `oma install <agent> --project`: Install an agent (Project-scoped)
+- `oma remove <agent>`: Remove an agent
+- `oma update`: Update OMA to the latest version
+
+### 🚀 SubAgents (The Legion)
+- `oma spawn <agent> "<task>"`: Spawn an isolated SubAgent for a specific task
+  - Example: `oma spawn oracle "Research best practices for Next.js auth"`
+- `oma session list`: List active/past SubAgent sessions
+- `oma session result <id>`: Get the result of a session
+
+### 🧠 Memory (Cortex)
+- `oma memory save "<info>"`: Save a piece of information
+  - Example: `oma memory save "Use TailwindCSS v3.4 for this project"`
+- `oma memory recall <query>`: Search memories
+- `oma memory list`: Show recent memories
+
 ## 🧠 Core Agents
 
 ### Orchestrator
