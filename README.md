@@ -165,15 +165,10 @@ oh-my-antigravity/
 
 ## 🙏 Acknowledgements
 
-This project stands on the shoulders of giants. We deeply admire and have drawn inspiration from:
+We deeply admire and have drawn inspiration from:
 
-- **[Oh My Zsh](https://ohmyz.sh/)**: The grandfather of "Oh My" frameworks. We adopted their philosophy of a delightful, community-driven configuration manager.
-- **[Oh My Claude Code](https://github.com/Yeachan-Heo/oh-my-claudecode)**: Pioneered the concept of agent personas in AI coding tools. Our agent structure is heavily influenced by their work.
-- **[Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode)**: Demonstrated excellent orchestration patterns for open-source LLMs.
-- **[Antigravity SubAgents](https://github.com/OleynikAleksandr/antigravity-subagents)**: Provided the foundational idea for wrapping external CLI tools as isolated sub-agents.
-- **[namtoppro's Sisyphus](https://github.com/namtoppro/oh-my-antigravity-sisyphus)**: We learned valuable lessons about intelligent skill activation and auto-updates from their implementation.
-
-We aim to contribute back to this ecosystem by pushing the boundaries of multi-agent orchestration.
+- **[Oh My Claude Code](https://github.com/Yeachan-Heo/oh-my-claudecode)**: Pioneered the concept of agent personas.
+- **[Oh My OpenCode](https://github.com/code-yeongyu/oh-my-opencode)**: Demonstrated excellent orchestration patterns.
 
 ## 📜 License
 
