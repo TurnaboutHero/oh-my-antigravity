@@ -19,6 +19,12 @@ param(
 $OMA_HOME = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $SESSIONS_DIR = Join-Path (Join-Path $OMA_HOME ".oma") "sessions"
 $SUBAGENTS_DIR = Join-Path $OMA_HOME "subagents"
+$MOCKS_DIR = Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) "mocks"
+
+# Add mocks to PATH
+if (Test-Path $MOCKS_DIR) {
+    $env:Path = "$MOCKS_DIR;$env:Path"
+}
 
 # Ensure directories exist
 if (-not (Test-Path $SESSIONS_DIR)) {
@@ -81,6 +87,8 @@ switch ($AiBackend) {
             exit 1
         }
         $cliCommand = "codex"
+        if ((Get-Command "codex").Source -like "*mocks*") { $cliCommand = "codex.cmd" }
+
         $cliArgs = @(
             "run",
             "--model", "gpt-4-code",
@@ -99,13 +107,15 @@ switch ($AiBackend) {
             exit 1
         }
         $cliCommand = "claude-code"
+        if ((Get-Command "claude-code").Source -like "*mocks*") { $cliCommand = "claude-code.cmd" }
+
         $cliArgs = @(
             "run",
             "--model", "claude-sonnet-3.5",
             "--max-tokens", "4000",
             "--input", $taskFile,
             "--output", (Join-Path $sessionDir "result.md"),
-            "--setting-sources", ""  # Isolation
+            "--setting-sources", "none"  # Isolation
         )
     }
     
@@ -134,6 +144,7 @@ switch ($AiBackend) {
             exit 1
         }
         $cliCommand = "gemini"
+        if ((Get-Command "gemini").Source -like "*mocks*") { $cliCommand = "gemini.cmd" }
         $cliArgs = @(
             "run",
             "--model", "gemini-3.0-pro",

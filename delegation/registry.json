@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "description": "Registry of Oh My Antigravity Agents for Sisyphus Delegation",
+  "orchestrators": [
+    {
+      "name": "sisyphus",
+      "role": "master-orchestrator",
+      "model": "claude-sonnet-3.5",
+      "can_delegate": true
+    },
+    {
+      "name": "prometheus",
+      "role": "planner",
+      "model": "claude-opus-4",
+      "can_delegate": true
+    },
+    {
+      "name": "metis",
+      "role": "reviewer",
+      "model": "claude-opus-4",
+      "can_delegate": false
+    }
+  ],
+  "specialists": [
+    {
+      "name": "oracle",
+      "domain": "architecture",
+      "capabilities": ["system-design", "architecture", "tech-stack-selection"],
+      "model": "claude-opus-4"
+    },
+    {
+      "name": "architect",
+      "domain": "architecture",
+      "capabilities": ["database-schema", "api-design", "data-modeling"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "strategist",
+      "domain": "architecture",
+      "capabilities": ["decision-making", "trade-off-analysis"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "codesmith",
+      "domain": "development",
+      "capabilities": ["backend-dev", "implementation", "logic", "algorithm"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "stitch",
+      "domain": "vision",
+      "capabilities": ["ui-design", "screen-neration", "frontend-prototyping", "gemini-stitch"],
+      "model": "gemini-3.0-pro"
+    },
+    {
+      "name": "pixel",
+      "domain": "development",
+      "capabilities": ["frontend-dev", "ui-ux", "css", "react", "components"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "refactorer",
+      "domain": "development",
+      "capabilities": ["code-improvement", "cleanup", "modernization"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "debugger",
+      "domain": "quality",
+      "capabilities": ["bug-fixing", "root-cause-analysis", "error-tracing"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "tester",
+      "domain": "quality",
+      "capabilities": ["unit-testing", "integration-testing", "jest", "pytest"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "qa-engineer",
+      "domain": "quality",
+      "capabilities": ["manual-testing-plan", "test-scenarios"],
+      "model": "claude-haiku"
+    },
+    {
+      "name": "security-guard",
+      "domain": "quality",
+      "capabilities": ["security-audit", "vulnerability-check", "owasp"],
+      "model": "claude-opus-4"
+    },
+    {
+      "name": "scribe",
+      "domain": "documentation",
+      "capabilities": ["documentation", "readme", "api-docs", "guides"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "librarian",
+      "domain": "documentation",
+      "capabilities": ["research", "reference-checking", "examples"],
+      "model": "claude-haiku"
+    },
+    {
+      "name": "explorer",
+      "domain": "documentation",
+      "capabilities": ["code-navigation", "file-finding"],
+      "model": "claude-haiku"
+    },
+    {
+      "name": "researcher",
+      "domain": "documentation",
+      "capabilities": ["deep-research", "comparative-analysis"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "data-wizard",
+      "domain": "data",
+      "capabilities": ["etl", "data-processing", "pipeline"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "sql-master",
+      "domain": "data",
+      "capabilities": ["sql-query", "database-optimization"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "scientist",
+      "domain": "data",
+      "capabilities": ["data-analysis", "statistics"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "scientist-low",
+      "domain": "data",
+      "capabilities": ["eda", "basic-stats"],
+      "model": "claude-haiku"
+    },
+    {
+      "name": "scientist-high",
+      "domain": "data",
+      "capabilities": ["ml-modeling", "complex-analysis"],
+      "model": "claude-opus-4"
+    },
+    {
+      "name": "devops-engineer",
+      "domain": "operations",
+      "capabilities": ["deployment", "ci-cd", "docker", "kubernetes"],
+      "model": "claude-opus-4"
+    },
+    {
+      "name": "git-master",
+      "domain": "operations",
+      "capabilities": ["git-ops", "version-control", "branching"],
+      "model": "claude-haiku"
+    },
+    {
+      "name": "performance-expert",
+      "domain": "operations",
+      "capabilities": ["optimization", "profiling", "speed"],
+      "model": "claude-opus-4"
+    },
+    {
+      "name": "playwright-master",
+      "domain": "operations",
+      "capabilities": ["e2e-testing", "browser-automation"],
+      "model": "claude-sonnet-3.5"
+    },
+    {
+      "name": "multimodal-looker",
+      "domain": "vision",
+      "capabilities": ["image-analysis", "ui-verification"],
+      "model": "claude-opus-4"
+    },
+    {
+      "name": "hello-antigravity",
+      "domain": "example",
+      "capabilities": ["greeting", "demo"],
+      "model": "claude-haiku"
+    }
+  ]
+}

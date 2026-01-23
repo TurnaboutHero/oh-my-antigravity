@@ -538,4 +538,64 @@ Implement → Test → Security Audit → Deploy
 
 ---
 
+---
+
+## Example 5: Frontend Design & Implementation (Stitch Pattern)
+
+**User Request**: "Design and build a modern landing page for a coffee shop"
+
+**Sisyphus Analysis**:
+- Complexity: Medium
+- Domain: Frontend (Design + Code)
+- Specialists: stitch (design) → pixel (code)
+
+**Delegation Flow**:
+
+```markdown
+[DELEGATE TO: stitch]
+TASK: Design a modern coffee shop landing page
+CONTEXT: 
+- Name: "Morning Brew"
+- Vibe: Cozy, warm, minimalist
+- Sections: Hero, Menu Highlights, About Us, Footer
+OUTPUT: Visual design description, color palette, layout structure
+[END DELEGATION]
+
+[RESULT FROM: stitch]
+Design Concept:
+- Palette: #3C2A21 (Dark Brown), #D5CEA3 (Beige), #1A120B (Black)
+- Hero: Full-screen image of latte art with "Start Your Day Right" typography
+- Typography: Playfair Display (Headings), Lato (Body)
+- Layout:
+  1. Stick navbar (transparent to solid on scroll)
+  2. Hero section with CTA "Order Now"
+  3. Card grid for Menu Highlights
+  4. Story section with parallax background
+[END RESULT]
+
+[DELEGATE TO: pixel]
+TASK: Implement coffee shop landing page based on Stitch's design
+CONTEXT: Design concept from stitch (above)
+REQUIREMENTS:
+- Use React + Tailwind CSS
+- Fully responsive (mobile-first)
+- Implement parallax effect mentioned
+OUTPUT: React code (App.tsx, components)
+[END DELEGATION]
+
+[RESULT FROM: pixel]
+Implemented Landing Page:
+- `components/Hero.tsx`: Uses provided colors
+- `components/MenuGrid.tsx`: Responsive grid card system
+- `App.tsx`: Parallax scroll implementation
+- `tailwind.config.js`: Added custom colors
+Code: [files created]
+[END RESULT]
+```
+
+**Total Time**: 2 specialists, sequential (Design → Code)
+
+---
+
 These examples show how Sisyphus orchestrates specialists for tasks of varying complexity! 🎯
+

@@ -1,0 +1,18 @@
+{
+  "name": "stitch",
+  "description": "Visual Design & UI/UX Specialist powered by Gemini Stitch",
+  "ai_backend": {
+    "primary": "gemini-3.0-pro",
+    "backup": "claude-sonnet-3.5"
+  },
+  "capabilities": [
+    "ui-design",
+    "screen-generation",
+    "asset-creation",
+    "frontend-prototyping"
+  ],
+  "context_rules": {
+    "keep_history": false,
+    "max_tokens": 8000
+  }
+}

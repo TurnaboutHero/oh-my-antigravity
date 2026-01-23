@@ -40,20 +40,17 @@ bash lib/install.sh
 ```
 
 ### Basic Usage
-
 ```bash
+# 🎯 Direct Helper (Default)
+# Just tell OMA what to do. Sisyphus will plan and execute it (in parallel if possible).
+oma "Analyze the project and design a new logo"
+
 # List available skills
 oma list
 
 # Install skills globally
 oma install sisyphus
 oma install oracle
-
-# Install to project
-oma install pixel --project
-
-# See installed skills
-oma installed
 ```
 
 ### 🧠 Project Cortex (Long-Term Memory)

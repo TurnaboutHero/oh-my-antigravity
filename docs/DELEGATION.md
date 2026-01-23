@@ -77,6 +77,11 @@ OUTPUT: Architecture diagram + technology choices with rationale
   - Accepts: `decision`, `comparison`, `evaluation`
   - Model: Claude Sonnet 3.5
 
+#### **Vision & Design**
+- **stitch** - UI/UX Design & Prototyping
+  - Accepts: `design`, `ui-creation`, `screen-generation`, `prototype`
+  - Model: Gemini 3.0 Pro + Stitch Extension
+
 #### **Development**
 - **codesmith** - Backend implementation
   - Accepts: `implement`, `code`, `backend`

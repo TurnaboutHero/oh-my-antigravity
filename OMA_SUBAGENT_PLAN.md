@@ -165,6 +165,7 @@ OUTPUT: SQL schema + explanation
 ### Architecture
 - **oracle**: System design, architecture decisions
 - **architect**: Database/API schema design
+- **stitch**: UI/UX Design (Gemini Stitch) [NEW]
 
 ### Development
 - **codesmith**: Backend implementation

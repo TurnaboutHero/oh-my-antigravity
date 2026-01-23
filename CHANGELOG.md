@@ -1,6 +1,10 @@
-# Changelog
+## [0.3.0-beta] - 2026-01-23
 
-## [0.1.0-beta] - 2026-01-22
+### Added
+- ⚡ **Parallel Orchestration Engine**: Sisyphus can now spawn multiple agents simultaneously.
+- 🎯 **Implicit Command Execution**: `oma "task"` automatically routes to Sisyphus.
+- 🔗 **Smart Plan Generation**: Sisyphus now understands nested parallel tasks in JSON plans.
+
 
 ### Added
 - 28 specialized agent skill definitions

@@ -23,6 +23,20 @@ $ANTIGRAVITY_HOME = Join-Path (Join-Path $HOME ".gemini") "antigravity"
 $ANTIGRAVITY_SKILLS = Join-Path $ANTIGRAVITY_HOME "skills"
 $ANTIGRAVITY_PROJECT = ".agent"
 
+# Smart Command Handling
+$KnownCommands = @("install", "remove", "list", "spawn", "session", "update", "memory", "doctor", "installed", "help", "sisyphus")
+
+if (-not [string]::IsNullOrEmpty($Command) -and ($KnownCommands -notcontains $Command.ToLower())) {
+    # Assume the user typed an objective directly (e.g. 'oma "make a website"')
+    # Shift arguments: Command becomes SkillName (Objective), Command becomes "sisyphus"
+    $SkillName = $Command
+    $Command = "sisyphus"
+}
+if ([string]::IsNullOrEmpty($Command)) {
+    # Default to help if nothing provided
+    $Command = "help" 
+}
+
 function Get-TargetPath {
     param([switch]$ForProject)
     
@@ -285,6 +299,30 @@ switch ($Command.ToLower()) {
     }
     "help" {
         Show-Help
+    }
+    "sisyphus" {
+        $sisyphusScript = Join-Path $SCRIPT_DIR "sisyphus-loop.js"
+        if (-not (Get-Command "node" -ErrorAction SilentlyContinue)) {
+             Write-Host "[ERROR] Node.js is required to run Sisyphus." -ForegroundColor Red
+             exit 1
+        }
+        
+        $objectiveParts = @()
+        if (-not [string]::IsNullOrEmpty($SkillName)) {
+            $objectiveParts += $SkillName
+        }
+        if ($RemainingArgs) {
+            $objectiveParts += $RemainingArgs
+        }
+        $objective = $objectiveParts -join " "
+        
+        if ([string]::IsNullOrWhiteSpace($objective)) {
+             Write-Host "[ERROR] Please provide an objective." -ForegroundColor Red
+             Write-Host "Usage: oma sisyphus <objective>" -ForegroundColor Yellow
+             exit 1
+        }
+        
+        node $sisyphusScript "$objective"
     }
     default {
         Write-Host "[ERROR] Unknown command: $Command" -ForegroundColor Red

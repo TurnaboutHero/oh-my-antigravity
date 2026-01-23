@@ -1,0 +1,11 @@
+﻿{
+    "task":  "Create a hello world function",
+    "started_at":  "2026-01-23T10:44:21.1003831+09:00",
+    "ai_backend":  "claude-code",
+    "subagent":  "codesmith",
+    "status":  "failed",
+    "error":  "\u0027ArgumentList\u0027 매개 변수에 대한 인수의 유효성을 검사할 수 없습니다. 인수가 null이거나 비어 있습니다. null이거나 비어 있지 않은 인수를 제공하고 명령을 다시 시도하십시오.",
+    "failed_at":  "2026-01-23T10:44:21.1415492+09:00",
+    "session_id":  "c60ecb32-2448-4faa-a773-967c28f6b981",
+    "context":  ""
+}

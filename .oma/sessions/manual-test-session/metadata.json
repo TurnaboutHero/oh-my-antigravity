@@ -1,0 +1,10 @@
+{
+    "task": "Manual Dashboard Verification",
+    "started_at": "2026-01-23T11:00:00.0000000+09:00",
+    "ai_backend": "manual-override",
+    "subagent": "pixel",
+    "status": "completed",
+    "completed_at": "2026-01-23T11:05:00.0000000+09:00",
+    "session_id": "manual-test-session",
+    "context": "Verifying dashboard visualization"
+}

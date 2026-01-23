@@ -35,3 +35,14 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+build/
+dist/

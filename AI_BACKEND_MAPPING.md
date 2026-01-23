@@ -25,8 +25,8 @@
 
 ### Gemini 3.0 Pro (Google)
 **강점**:
-- 프론트엔드 디자인 ⭐
-- UI/UX 구현
+- 프론트엔드 디자인 ⭐ (with Stitch Extension)
+- UI/UX 구현 ("stitch" subagent)
 - 기능 구현 능력
 - 빠른 속도
 
